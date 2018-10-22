@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <extension key="com.hjed.civicrm.memberactions" type="module">
   <file>memberactions</file>
-  <name>FIXME</name>
-  <description>FIXME</description>
+  <name>Membership Actions for CiviRules</name>
+  <description>Provides CiviRules Actions for manipulating memberships</description>
   <license>AGPL-3.0</license>
   <maintainer>
     <author>hjed</author>
@@ -20,6 +20,9 @@
   <compatibility>
     <ver>4.7</ver>
   </compatibility>
+  <requires>
+    <ext>org.civicoop.civirules</ext>
+  </requires>
   <comments>This is a new, undeveloped module</comments>
   <civix>
     <namespace>CRM/Memberactions</namespace>

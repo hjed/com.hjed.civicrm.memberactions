@@ -1,15 +1,14 @@
 # com.hjed.civicrm.memberactions
 
-![Screenshot](/images/screenshot.png)
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
 
 The extension is licensed under [AGPL-3.0](LICENSE.txt).
 
 ## Requirements
 
 * PHP v5.4+
-* CiviCRM (*FIXME: Version number*)
+* CiviCRM 5.4
+* CiviRules 2.2
 
 ## Installation (Web UI)
 

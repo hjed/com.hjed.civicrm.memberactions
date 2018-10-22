@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/memberactions/form/action/membership/create</path>
+    <page_callback>CRM_Memberactions_Form_CreateMembershipAction</page_callback>
+    <title>CreateMembershipAction</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
