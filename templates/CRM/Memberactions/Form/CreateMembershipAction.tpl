@@ -6,6 +6,11 @@
     <div class="content">{$form.type.html}</div>
     <div class="clear"></div>
   </div>
+  <div class="crm-section">
+    <div class="label">{$form.only_if_not_exist.label}</div>
+    <div class="content">{$form.only_if_not_exist.html}</div>
+    <div class="clear"></div>
+  </div>
 </div>
 
 <div class="crm-submit-buttons">

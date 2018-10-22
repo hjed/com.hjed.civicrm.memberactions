@@ -36,12 +36,24 @@ class CRM_Memberactions_MembershipCreate extends CRM_Civirules_Action {
     $changed = false;
     $action_params = $this->getActionParameters();
 
+    // if we only want to run if it exists
+    if($action_params['only_if_not_exist']) {
+      $checkParams = array(
+        'contact_id' => $contactId,
+        'membership_type_id' => $action_params['type']
+      );
+      $result = civicrm_api3('membership', 'get', $checkParams);
+      if($result["count"] > 0) {
+        return;
+      }
+    }
+
     $createParams = array(
       'contact_id' => $contactId,
       'membership_type_id' => $action_params['type']
     );
 
-    civicrm_api3("membership", "create", $createParams);
+    civicrm_api3('membership', 'create', $createParams);
   }
 
 

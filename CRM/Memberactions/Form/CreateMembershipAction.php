@@ -32,6 +32,11 @@ class CRM_Memberactions_Form_CreateMembershipAction extends CRM_CivirulesActions
       ts('Membership Type'),
       array('' => ts('-- please select --')) + $this->getMembershipTypes());
 
+    $this->add(
+      'checkbox',
+      'only_if_not_exist',
+      ts('Only if doesn\'t exist')
+    );
 
 //    parent::buildQuickForm();
 
@@ -47,6 +52,7 @@ class CRM_Memberactions_Form_CreateMembershipAction extends CRM_CivirulesActions
    */
   public function postProcess() {
     $data['type'] = $this->_submitValues['type'];
+    $data['only_if_not_exist'] = $this->_submitValues['only_if_not_exist'];
 
     $this->ruleAction->action_params = serialize($data);
     $this->ruleAction->save();

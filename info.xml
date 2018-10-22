@@ -19,6 +19,7 @@
   <develStage>alpha</develStage>
   <compatibility>
     <ver>4.7</ver>
+    <ver>5.6</ver>
   </compatibility>
   <requires>
     <ext>org.civicoop.civirules</ext>
