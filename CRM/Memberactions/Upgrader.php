@@ -39,6 +39,7 @@ class CRM_Memberactions_Upgrader extends CRM_Memberactions_Upgrader_Base {
    */
   public function uninstall() {
     CRM_Core_DAO::executeQuery('DELETE FROM civirule_action WHERE name = "membership_create"');
+    CRM_Core_DAO::executeQuery('DELETE FROM civirule_action WHERE name = "membership_status_change"');
   }
 
   /**
@@ -46,6 +47,7 @@ class CRM_Memberactions_Upgrader extends CRM_Memberactions_Upgrader_Base {
    */
   public function enable() {
     CRM_Core_DAO::executeQuery('UPDATE civirule_action SET is_active = 1 WHERE name = "membership_create"');
+    CRM_Core_DAO::executeQuery('UPDATE civirule_action SET is_active = 1 WHERE name = "membership_status_change"');
   }
 
   /**
@@ -53,6 +55,7 @@ class CRM_Memberactions_Upgrader extends CRM_Memberactions_Upgrader_Base {
    */
   public function disable() {
     CRM_Core_DAO::executeQuery('UPDATE civirule_action SET is_active = 0 WHERE name = "membership_create"');
+    CRM_Core_DAO::executeQuery('UPDATE civirule_action SET is_active = 0 WHERE name = "membership_status_change"');
   }
 
   /**
@@ -70,16 +73,17 @@ class CRM_Memberactions_Upgrader extends CRM_Memberactions_Upgrader_Base {
 
 
   /**
-   * Example: Run an external SQL script.
+   * Runs an sql query to add the new rule
    *
    * @return TRUE on success
    * @throws Exception
-  public function upgrade_4201() {
-    $this->ctx->log->info('Applying update 4201');
+   */
+  public function upgrade_0001() {
+    $this->ctx->log->info('Applying update 0001');
     // this path is relative to the extension base dir
-    $this->executeSqlFile('sql/upgrade_4201.sql');
+    $this->executeSqlFile('sql/upgrade_0001.sql');
     return TRUE;
-  } // */
+  }
 
 
   /**

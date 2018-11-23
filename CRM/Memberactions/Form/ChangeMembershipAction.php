@@ -7,7 +7,7 @@ use CRM_Memberactions_ExtensionUtil as E;
  *
  * @see https://wiki.civicrm.org/confluence/display/CRMDOC/QuickForm+Reference
  */
-class CRM_Memberactions_Form_CreateMembershipAction extends CRM_CivirulesActions_Form_Form {
+class CRM_Memberactions_Form_ChangeMembershipAction extends CRM_CivirulesActions_Form_Form {
 
   /**
    * Method to get the list of available membership types
@@ -22,6 +22,18 @@ class CRM_Memberactions_Form_CreateMembershipAction extends CRM_CivirulesActions
     return $options;
   }
 
+  /**
+   * Method to get the list of available membership statuses
+   * @return array
+   */
+  private function getMembershipStatuses() {
+    $memberStatues = civicrm_api3('MembershipStatus', 'get');
+    $options = array();
+    foreach($memberStatues['values'] as $memberStatus) {
+      $options[$memberStatus['id']] = $memberStatus['name'];
+    }
+    return $options;
+  }
   public function buildQuickForm() {
 
     $this->add('hidden', 'rule_action_id');
@@ -29,13 +41,21 @@ class CRM_Memberactions_Form_CreateMembershipAction extends CRM_CivirulesActions
     $this->add(
       'select',
       'type',
-      ts('Membership Type'),
-      array('' => ts('-- please select --')) + $this->getMembershipTypes());
+      ts('Membership Type to Change the Status of'),
+      array('' => ts('-- please select --')) + $this->getMembershipTypes()
+    );
+
+    $this->add(
+      'select',
+      'status',
+      ts('The status to change the membership too'),
+      array('' => ts('-- please select --')) + $this->getMembershipStatuses()
+    );
 
     $this->add(
       'checkbox',
-      'only_if_not_exist',
-      ts('Only if doesn\'t exist')
+      'addEndDate',
+      ts('Set the end date to the current date')
     );
 
 
@@ -51,10 +71,12 @@ class CRM_Memberactions_Form_CreateMembershipAction extends CRM_CivirulesActions
    */
   public function postProcess() {
     $data['type'] = $this->_submitValues['type'];
-    $data['only_if_not_exist'] = $this->_submitValues['only_if_not_exist'];
+    $data['status'] = $this->_submitValues['status'];
+    $data['addEndDate'] = $this->_submitValues['addEndDate'];
 
     $this->ruleAction->action_params = serialize($data);
     $this->ruleAction->save();
     parent::postProcess();
   }
+
 }

@@ -7,8 +7,13 @@
     <div class="clear"></div>
   </div>
   <div class="crm-section">
-    <div class="label">{$form.only_if_not_exist.label}</div>
-    <div class="content">{$form.only_if_not_exist.html}</div>
+    <div class="label">{$form.status.label}</div>
+    <div class="content">{$form.status.html}</div>
+    <div class="clear"></div>
+  </div>
+  <div class="crm-section">
+    <div class="label">{$form.addEndDate.label}</div>
+    <div class="content">{$form.addEndDate.html}</div>
     <div class="clear"></div>
   </div>
 </div>

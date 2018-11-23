@@ -6,4 +6,10 @@
     <title>CreateMembershipAction</title>
     <access_arguments>access CiviCRM</access_arguments>
   </item>
+  <item>
+    <path>civicrm/memberactions/form/action/membership/change</path>
+    <page_callback>CRM_Memberactions_Form_ChangeMembershipAction</page_callback>
+    <title>ChangeMembershipAction</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
 </menu>
